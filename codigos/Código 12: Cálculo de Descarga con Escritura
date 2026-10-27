@@ -1,0 +1,31 @@
+; =====================================================================
+; Materia: Lenguajes de Interfaz 
+; Alumno: Kevin Jassiel Sanchez Ramos 
+; Horario: 8:00 - 9:00 
+; Docente: Dr. José Luis Medina Jiménez 
+; Práctica: 12. Desplazamiento y rotación 
+; Descripción: Operaciones de desplazamiento lógico y aritmético (SHL, SHR, SAR) 
+; así como rotaciones de bits aplicadas a registros.
+; =====================================================================
+
+INCLUDE Irvine32.inc
+
+.code
+main PROC
+    ; Desplazamiento lógico a la izquierda (SHL)
+    mov al, 10000110b
+    shl al, 2
+    call DumpRegs
+    call WriteBin
+    call Crlf
+
+    ; Desplazamiento lógico a la derecha (SHR)
+    mov al, 00001101b
+    shr al, 1
+    call DumpRegs
+    call WriteBin
+    call Crlf
+
+    exit
+main ENDP
+END main

@@ -1,0 +1,36 @@
+; =====================================================================
+; Materia: Lenguajes de Interfaz 
+; Alumno: Kevin Jassiel Sanchez Ramos 
+; Horario: 8:00 - 9:00 
+; Docente: Dr. José Luis Medina Jiménez 
+; Práctica: 2. Captura y desplegado de mensajes 
+; Descripción: Programa que solicita una cadena de texto al usuario 
+; mediante ReadString y la despliega en pantalla usando WriteString.
+; =====================================================================
+
+INCLUDE Irvine32.inc
+
+.data
+    mensajeBienvenida BYTE "Que quieres escribir?", 0
+    palabra BYTE 20 DUP(0)  ; Buffer de 20 bytes para almacenar la entrada
+
+.code
+main PROC
+    ; Desplegar mensaje de bienvenida
+    mov edx, OFFSET mensajeBienvenida
+    call WriteString
+
+    ; Capturar la cadena ingresada por consola
+    mov edx, OFFSET palabra
+    mov ecx, SIZEOF palabra
+    call ReadString
+    call Crlf
+
+    ; Desplegar la cadena almacenada de vuelta en pantalla
+    mov edx, OFFSET palabra
+    call WriteString
+    call Crlf
+
+    exit
+main ENDP
+END main

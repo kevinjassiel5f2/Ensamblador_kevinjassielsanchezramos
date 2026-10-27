@@ -1,0 +1,32 @@
+; =====================================================================
+; Materia: Lenguajes de Interfaz 
+; Alumno: Kevin Jassiel Sanchez Ramos 
+; Horario: 8:00 - 9:00 
+; Docente: Dr. José Luis Medina Jiménez 
+; Práctica: 14. Captura y almacenamiento de datos numéricos 
+; Descripción: Lectura de números enteros ingresados por teclado 
+; mediante la rutina ReadInt y almacenamiento en variables de memoria (SDWORD).
+; =====================================================================
+
+INCLUDE Irvine32.inc
+
+.data
+    msgPrompt BYTE "Introduce un numero entero: ", 0
+    msgGuardo BYTE "Dato almacenado correctamente en memoria.", 0
+    numeroAlmacenado SDWORD ?
+
+.code
+main PROC
+    mov edx, OFFSET msgPrompt
+    call WriteString
+
+    call ReadInt            ; Lee entero desde consola (queda en EAX)
+    mov numeroAlmacenado, eax ; Almacena el valor en la variable global
+
+    mov edx, OFFSET msgGuardo
+    call WriteString
+    call Crlf
+
+    exit
+main ENDP
+END main

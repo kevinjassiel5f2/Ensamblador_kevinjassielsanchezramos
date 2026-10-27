@@ -1,0 +1,33 @@
+; =====================================================================
+; ENCABEZADO: Ingreso de Datos con ReadString
+; Descripción: Lee una cadena de caracteres ingresada por el usuario 
+; y la vuelve a imprimir en pantalla.
+; =====================================================================
+
+INCLUDE Irvine32.inc
+
+.data
+	mensajeBienvenida BYTE "Que quieres escribir?", 0
+	palabra BYTE 20 DUP(0)  ; Buffer de 20 bytes inicializados en 0 para la cadena
+
+.code
+main PROC
+	; Muestra el mensaje de solicitud
+	mov edx, OFFSET mensajeBienvenida
+	call WriteString
+
+	; Configuración para leer la cadena
+	mov edx, OFFSET palabra
+	mov ecx, SIZEOF palabra   ; Tamaño máximo de bytes a leer
+	call ReadString           ; Captura la cadena desde la consola
+	call Crlf
+
+	; Vuelve a imprimir la cadena almacenada
+	mov edx, OFFSET palabra
+	call WriteString
+	call Crlf
+	
+	exit
+main ENDP
+
+END main

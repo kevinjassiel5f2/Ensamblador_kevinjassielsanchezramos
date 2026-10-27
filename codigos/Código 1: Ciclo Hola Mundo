@@ -1,0 +1,27 @@
+; =====================================================================
+; Materia: Lenguajes de Interfaz 
+; Alumno: Kevin Jassiel Sanchez Ramos 
+; Horario: 8:00 - 9:00 
+; Docente: Dr. José Luis Medina Jiménez 
+; Práctica: 1. Ciclos numéricos 
+; Descripción: Implementación de un ciclo descendente utilizando el registro 
+; ECX y la instrucción LOOP para imprimir valores numéricos en consola.
+; =====================================================================
+
+INCLUDE Irvine32.inc
+
+.data
+; Sin variables globales requeridas
+
+.code
+main PROC
+    mov ecx, 5              ; Inicializa el contador del ciclo en 5 iteraciones
+ciclo:
+    mov eax, ecx            ; Copia el valor actual de ECX a EAX
+    call WriteDec           ; Imprime el valor numérico en formato decimal
+    call Crlf               ; Salto de línea
+    loop ciclo              ; Decrementa ECX y repite si ECX > 0
+    
+    exit
+main ENDP
+END main

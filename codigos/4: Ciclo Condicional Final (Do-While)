@@ -1,0 +1,64 @@
+; =====================================================================
+; Materia: Lenguajes de Interfaz 
+; Alumno: Kevin Jassiel Sanchez Ramos 
+; Horario: 8:00 - 9:00 
+; Docente: Dr. José Luis Medina Jiménez 
+; Práctica: 4.1. Mayor, menor o igual con entrada del usuario 
+; Descripción: Solicita dos números enteros al usuario, evalúa su relación 
+; mediante saltos condicionales (JE, JG, JL) e imprime el resultado.
+; =====================================================================
+
+INCLUDE Irvine32.inc
+
+.data
+    mensaje1   BYTE "Teclea el primer numero : ", 0
+    Num1       SDWORD ?
+    mensaje2   BYTE "Teclea el segundo numero : ", 0
+    Num2       SDWORD ?
+    msgIguales BYTE "Los valores son iguales", 0
+    msgMayor   BYTE "El valor 1 es mayor", 0
+    msgMenor   BYTE "El valor 1 es menor", 0
+
+.code
+main PROC
+    ; Leer primer número
+    mov edx, OFFSET mensaje1
+    call WriteString
+    call ReadInt
+    mov Num1, eax
+    call Crlf
+
+    ; Leer segundo número
+    mov edx, OFFSET mensaje2
+    call WriteString
+    call ReadInt
+    mov Num2, eax
+    call Crlf
+
+    ; Comparar ambos valores
+    mov eax, Num1
+    cmp eax, Num2
+
+    je iguales              ; Salta si son iguales
+    jg mayor                ; Salta si Num1 es mayor
+    jl menor                ; Salta si Num1 es menor
+
+iguales:
+    mov edx, OFFSET msgIguales
+    call WriteString
+    jmp fin
+
+mayor:
+    mov edx, OFFSET msgMayor
+    call WriteString
+    jmp fin
+
+menor:
+    mov edx, OFFSET msgMenor
+    call WriteString
+
+fin:
+    call Crlf
+    exit
+main ENDP
+END main

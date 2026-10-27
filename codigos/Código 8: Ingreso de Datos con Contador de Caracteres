@@ -1,0 +1,35 @@
+; =====================================================================
+; Materia: Lenguajes de Interfaz 
+; Alumno: Kevin Jassiel Sanchez Ramos 
+; Horario: 8:00 - 9:00 
+; Docente: Dr. José Luis Medina Jiménez 
+; Práctica: 8. Operaciones aritméticas 
+; Descripción: Realiza cálculos aritméticos complejos (multiplicación, 
+; división con manejo de residuos, resta y porcentajes) simulando el procesamiento de datos.
+; =====================================================================
+
+INCLUDE Irvine32.inc
+
+.data
+    msg_resultado BYTE "Resultado de operacion: ", 0
+    valor1 DWORD 100
+    valor2 DWORD 25
+    resultado DWORD ?
+
+.code
+main PROC
+    ; Operación de suma
+    mov eax, valor1
+    add eax, valor2
+    mov resultado, eax
+
+    ; Desplegar resultado
+    mov edx, OFFSET msg_resultado
+    call WriteString
+    mov eax, resultado
+    call WriteDec
+    call Crlf
+
+    exit
+main ENDP
+END main

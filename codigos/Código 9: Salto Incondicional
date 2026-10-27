@@ -1,0 +1,34 @@
+; =====================================================================
+; Materia: Lenguajes de Interfaz 
+; Alumno: Kevin Jassiel Sanchez Ramos 
+; Horario: 8:00 - 9:00 
+; Docente: Dr. José Luis Medina Jiménez 
+; Práctica: 9. PUSH y POP 
+; Descripción: Demuestra el uso de la pila (Stack) del sistema mediante 
+; las instrucciones PUSH para almacenar registros y POP para recuperarlos.
+; =====================================================================
+
+INCLUDE Irvine32.inc
+
+.code
+main PROC
+    mov eax, 1234h
+    mov ebx, 5678h
+
+    ; Almacenar registros en la pila
+    push eax
+    push ebx
+
+    ; Modificar registros temporalmente
+    mov eax, 0
+    mov ebx, 0
+
+    ; Recuperar valores originales de la pila en orden inverso (LIFO)
+    pop ebx
+    pop eax
+
+    call DumpRegs           ; Verifica que EAX y EBX recuperaron sus valores iniciales
+
+    exit
+main ENDP
+END main

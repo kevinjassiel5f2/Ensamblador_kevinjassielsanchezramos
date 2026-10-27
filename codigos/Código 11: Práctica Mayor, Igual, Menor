@@ -1,0 +1,34 @@
+; =====================================================================
+; Materia: Lenguajes de Interfaz 
+; Alumno: Kevin Jassiel Sanchez Ramos 
+; Horario: 8:00 - 9:00 
+; Docente: Dr. José Luis Medina Jiménez 
+; Práctica: 11. Operaciones lógicas 
+; Descripción: Demuestra el uso de compuertas lógicas a nivel de bits 
+; utilizando instrucciones como AND, OR, XOR y NOT.
+; =====================================================================
+
+INCLUDE Irvine32.inc
+
+.code
+main PROC
+    mov al, 11001100b
+    mov bl, 10101010b
+
+    ; Operación AND bit a bit
+    and al, bl              ; AL = 10001000b
+    call DumpRegs
+
+    ; Operación OR bit a bit
+    mov al, 11001100b
+    or al, bl               ; AL = 11101110b
+    call DumpRegs
+
+    ; Operación XOR bit a bit
+    mov al, 11001100b
+    xor al, bl              ; AL = 01100110b
+    call DumpRegs
+
+    exit
+main ENDP
+END main

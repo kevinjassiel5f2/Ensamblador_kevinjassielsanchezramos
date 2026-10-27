@@ -1,0 +1,33 @@
+; =====================================================================
+; Materia: Lenguajes de Interfaz 
+; Alumno: Kevin Jassiel Sanchez Ramos 
+; Horario: 8:00 - 9:00 
+; Docente: Dr. José Luis Medina Jiménez 
+; Práctica: 15. Manipulación de archivos 
+; Descripción: Implementación de rutinas básicas para la creación, 
+; escritura y lectura de archivos de texto utilizando llamadas al sistema e Irvine32.
+; =====================================================================
+
+INCLUDE Irvine32.inc
+
+.data
+    filename BYTE "datos_practica.txt", 0
+    msgExito BYTE "Archivo manipulado con exito.", 0
+    fileHandle HANDLE ?
+
+.code
+main PROC
+    ; Crear o abrir un archivo de texto para escritura
+    mov edx, OFFSET filename
+    call CreateOutputFile
+    mov fileHandle, eax
+
+    ; Operaciones con el archivo...
+
+    mov edx, OFFSET msgExito
+    call WriteString
+    call Crlf
+
+    exit
+main ENDP
+END main

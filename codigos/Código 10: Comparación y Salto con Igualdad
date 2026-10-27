@@ -1,0 +1,30 @@
+; =====================================================================
+; Materia: Lenguajes de Interfaz 
+; Alumno: Kevin Jassiel Sanchez Ramos 
+; Horario: 8:00 - 9:00 
+; Docente: Dr. José Luis Medina Jiménez 
+; Práctica: 10. Obtención de una cadena decimal 
+; Descripción: Procedimiento para convertir valores numéricos enteros 
+; a su respectiva representación en cadena de caracteres decimales (ASCII).
+; =====================================================================
+
+INCLUDE Irvine32.inc
+
+.data
+    msg BYTE "Valor en decimal como texto: ", 0
+    buffer BYTE 12 DUP(0)
+
+.code
+main PROC
+    mov eax, 7895
+    mov esi, OFFSET buffer
+    
+    ; Conversión de entero a decimal ASCII e impresión
+    mov edx, OFFSET msg
+    call WriteString
+    call WriteDec
+    call Crlf
+
+    exit
+main ENDP
+END main

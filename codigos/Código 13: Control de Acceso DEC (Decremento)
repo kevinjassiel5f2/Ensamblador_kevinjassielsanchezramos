@@ -1,0 +1,27 @@
+; =====================================================================
+; Materia: Lenguajes de Interfaz 
+; Alumno: Kevin Jassiel Sanchez Ramos 
+; Horario: 8:00 - 9:00 
+; Docente: Dr. José Luis Medina Jiménez 
+; Práctica: 13. Obtención de una cadena hexadecimal 
+; Descripción: Conversión y despliegue de valores numéricos en formato 
+; de cadena hexadecimal utilizando funciones nativas de la librería Irvine32.
+; =====================================================================
+
+INCLUDE Irvine32.inc
+
+.data
+    msgHex BYTE "Valor en Hexadecimal: ", 0
+
+.code
+main PROC
+    mov eax, 48DFh          ; Valor de ejemplo a mostrar en hex
+
+    mov edx, OFFSET msgHex
+    call WriteString
+    call WriteHex           ; Despliega el contenido de EAX en formato hexadecimal
+    call Crlf
+
+    exit
+main ENDP
+END main

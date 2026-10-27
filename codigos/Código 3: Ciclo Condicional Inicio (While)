@@ -1,0 +1,35 @@
+; =====================================================================
+; Materia: Lenguajes de Interfaz 
+; Alumno: Kevin Jassiel Sanchez Ramos 
+; Horario: 8:00 - 9:00 
+; Docente: Dr. José Luis Medina Jiménez 
+; Práctica: 3. Comparación y prueba 
+; Descripción: Evaluación de instrucciones de comparación (CMP) y pruebas 
+; lógicas (TEST) reflejadas en las banderas del procesador mediante DumpRegs.
+; =====================================================================
+
+INCLUDE Irvine32.inc
+
+.code
+main PROC
+    ; Caso 1: Prueba de Zero Flag (ZF) con valores iguales
+    mov eax, 5
+    mov ebx, 5
+    cmp eax, ebx
+    call DumpRegs           ; Muestra registros y estado de banderas
+
+    ; Caso 2: Prueba de Sign Flag (SF) con números con signo
+    mov al, -5
+    mov bl, 1
+    cmp al, bl
+    call DumpRegs
+
+    ; Caso 3: Operación TEST (AND lógico sin alterar operandos)
+    mov eax, 0
+    mov ebx, 5
+    test eax, 1
+    call DumpRegs
+
+    exit
+main ENDP
+END main
